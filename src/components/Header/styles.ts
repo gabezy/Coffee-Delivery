@@ -33,5 +33,23 @@ export const HeaderBox = styled.div`
     background: ${({ theme }) => theme.yellowLight};
     border-radius: 8px;
     color: ${({ theme }) => theme.yellowDark};
+    position: relative;
+    .total {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: absolute;
+      width: 21px;
+      height: 21px;
+      right: -8.35px;
+      top: -8px;
+      border-radius: 1000px;
+      font-size: 12px;
+      line-height: 1.3;
+      font-weight: bold;
+      background: ${({ theme }) => theme.yellowDark} !important;
+      color: ${({ theme }) => theme.white} !important;
+    }
   }
 `;
