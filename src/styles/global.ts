@@ -1,7 +1,7 @@
 import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
-  *{
+  *, *::before, *::after{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -31,7 +31,7 @@ export const GlobalStyle = createGlobalStyle`
   
 `;
 
-export const Container = styled.div`
+export const Container = styled.section`
   max-width: 1200px;
   margin-inline: auto;
   padding: 8px;

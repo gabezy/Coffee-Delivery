@@ -7,6 +7,7 @@ export type CoffeeProps = {
   types: string[];
   title: string;
   description: string;
+  price: string;
 };
 
 export const Coffees = () => {
@@ -33,6 +34,7 @@ export const Coffees = () => {
             description={coffee.description}
             title={coffee.title}
             types={coffee.types}
+            price={coffee.price}
           />
         ))}
       </CoffeesList>

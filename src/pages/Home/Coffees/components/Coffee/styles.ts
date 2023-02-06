@@ -75,21 +75,22 @@ export const CoffeeBuy = styled.div`
     display: flex;
     align-items: center;
     gap: 8px;
-    a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px;
-      border-radius: 8px;
-      transition: all 0.3s;
-      background: ${({ theme }) => theme.purpleDark};
-      svg {
-        fill: ${({ theme }) => theme.white};
-      }
-      &:hover {
-        background: ${({ theme }) => theme.purple};
-      }
-    }
+  }
+`;
+
+export const BuyButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.3s;
+  background: ${({ theme }) => theme.purpleDark};
+  svg {
+    fill: ${({ theme }) => theme.white};
+  }
+  &:hover {
+    background: ${({ theme }) => theme.purple};
   }
 `;
 

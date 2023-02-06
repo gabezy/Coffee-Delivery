@@ -1,9 +1,15 @@
 import React, { ReactNode } from "react";
 
+type Coffee = {
+  title: string;
+  amount: number;
+  price: number;
+};
+
 type AppContextProps = {
-  amountItems: number;
-  addItem: () => void;
-  removeItem: () => void;
+  totalAmountOfCoffees: Coffee[];
+  addNewCoffee: (data: Coffee) => void;
+  removeItem: (data: Coffee) => void;
 };
 
 export const AppContext = React.createContext({} as AppContextProps);
@@ -13,21 +19,31 @@ type AppContextProviderProps = {
 };
 
 export const AppContextProvider = ({ children }: AppContextProviderProps) => {
-  const [amountItems, setAmountItems] = React.useState(0);
+  const [totalAmountOfCoffees, setTotalAmountOfCoffees] = React.useState<
+    Coffee[]
+  >([]);
 
-  const addItem = () => {
-    setAmountItems((prev) => prev + 1);
+  const addNewCoffee = (data: Coffee) => {
+    const newCoffee: Coffee = {
+      title: data.title,
+      amount: data.amount,
+      price: data.price,
+    };
+
+    setTotalAmountOfCoffees((prev) => [...prev, newCoffee]);
   };
 
-  const removeItem = () => {
-    setAmountItems((prev) => {
-      if (prev <= 0) return prev;
-      return prev - 1;
+  const removeItem = (data: Coffee) => {
+    setTotalAmountOfCoffees((prev) => {
+      if (prev.length <= 0) return prev;
+      return prev.filter((coffee) => coffee.title !== data.title);
     });
   };
 
   return (
-    <AppContext.Provider value={{ amountItems, addItem, removeItem }}>
+    <AppContext.Provider
+      value={{ totalAmountOfCoffees, addNewCoffee, removeItem }}
+    >
       {children}
     </AppContext.Provider>
   );

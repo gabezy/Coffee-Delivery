@@ -11,7 +11,7 @@ export const lightTheme = {
   baseLabel: "#8D8686",
   baseHover: "#D7D5D5",
   baseButton: "#E6E5E5",
-  baseinput: "#EDEDED",
+  baseInput: "#EDEDED",
   baseCard: "#F3F2F2",
   background: "#FAFAFA",
   white: "#FFFFFF",

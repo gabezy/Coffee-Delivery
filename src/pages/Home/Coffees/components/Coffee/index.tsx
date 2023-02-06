@@ -1,6 +1,7 @@
 import React from "react";
 import {
   AmountContainer,
+  BuyButton,
   CoffeeBuy,
   CoffeeCard,
   CoffeeDescription,
@@ -18,21 +19,32 @@ export const Coffee = ({
   title,
   types,
   description,
+  price,
 }: CoffeeProps) => {
   const [amountCoffee, setAmountCoffee] = React.useState(0);
-  const { addItem, removeItem } = React.useContext(AppContext);
+  const { addNewCoffee } = React.useContext(AppContext);
 
   const handleAddCoffee = () => {
-    addItem();
     setAmountCoffee((prev) => prev + 1);
   };
 
   const handleRemoveCoffee = () => {
-    removeItem();
     setAmountCoffee((prev) => {
       if (prev <= 0) return prev;
       else return prev - 1;
     });
+  };
+
+  const handleBuyCoffee = () => {
+    const newCoffee = {
+      title,
+      amount: amountCoffee,
+      price: Number(price.replace(",", ".")),
+    };
+    console.log({ amountCoffee });
+    console.log(newCoffee);
+
+    addNewCoffee(newCoffee);
   };
 
   return (
@@ -47,7 +59,7 @@ export const Coffee = ({
       <CoffeeDescription>{description}</CoffeeDescription>
       <CoffeeBuy>
         <div className="price">
-          R$<span>9,90</span>
+          R$<span>{price}</span>
         </div>
         <div className="amount">
           <AmountContainer>
@@ -55,9 +67,9 @@ export const Coffee = ({
             <span>{amountCoffee}</span>
             <button onClick={handleAddCoffee}>+</button>
           </AmountContainer>
-          <Link to="/">
+          <BuyButton type="button" onClick={handleBuyCoffee}>
             <ShoppingCart size={20} weight="fill" />
-          </Link>
+          </BuyButton>
         </div>
       </CoffeeBuy>
     </CoffeeCard>

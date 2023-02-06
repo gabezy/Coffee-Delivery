@@ -6,7 +6,18 @@ import { Link } from "react-router-dom";
 import { AppContext } from "../../contexts/AppContext";
 
 export const Header = () => {
-  const { amountItems } = React.useContext(AppContext);
+  const { totalAmountOfCoffees } = React.useContext(AppContext);
+  const [total, setTotal] = React.useState(0);
+
+  React.useEffect(() => {
+    let totalCoffees = 0;
+    if (totalAmountOfCoffees.length > 0) {
+      for (const coffee of totalAmountOfCoffees) {
+        totalCoffees += coffee.amount;
+      }
+      setTotal(totalCoffees);
+    }
+  }, [totalAmountOfCoffees]);
 
   return (
     <HeaderContainer>
@@ -19,7 +30,7 @@ export const Header = () => {
             <MapPin size={24} weight="fill" /> Porto Alegre, RS
           </span>
           <Link to={"/checkout"}>
-            {amountItems > 0 && <div className="total">{amountItems}</div>}
+            {total > 0 && <div className="total">{total}</div>}
             <ShoppingCart size={24} weight="fill" />
           </Link>
         </HeaderBox>
