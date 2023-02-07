@@ -1,9 +1,10 @@
 import React, { ReactNode } from "react";
 
-type Coffee = {
+export type Coffee = {
   title: string;
   amount: number;
   price: number;
+  imageURL: string;
 };
 
 type AppContextProps = {
@@ -28,6 +29,7 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
       title: data.title,
       amount: data.amount,
       price: data.price,
+      imageURL: data.imageURL,
     };
 
     setTotalAmountOfCoffees((prev) => [...prev, newCoffee]);

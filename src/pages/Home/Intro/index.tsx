@@ -1,7 +1,7 @@
 import React from "react";
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
 import { IntroContainer, IntroContent, IntroTitle } from "./styles";
-import coffeeImage from "../../../assets/coffee.png";
+import coffeeBanner from "../../../assets/banner.png";
 
 export const Intro = () => {
   return (
@@ -35,7 +35,7 @@ export const Intro = () => {
           </li>
         </ul>
       </IntroContent>
-      <img src={coffeeImage} />
+      <img src={coffeeBanner} />
     </IntroContainer>
   );
 };

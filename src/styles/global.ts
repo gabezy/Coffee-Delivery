@@ -43,3 +43,18 @@ export const BaseTitle = styled.h1`
   line-height: 1.3;
   color: ${({ theme }) => theme.baseTitle};
 `;
+
+export const Button = styled.button`
+  width: 100%;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: bold;
+  padding: 12px 8px;
+  color: ${({ theme }) => theme.white};
+  background: ${({ theme }) => theme.yellow};
+  border-radius: 8px;
+  transition: all 0.3s;
+  &:hover {
+    background: ${({ theme }) => theme.yellowDark};
+  }
+`;

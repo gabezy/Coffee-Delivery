@@ -3,9 +3,18 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 16px;
+`;
+
+const BaseWrapperCheckout = styled.div`
+  display: flex;
+  flex-direction: column;
   background: ${({ theme }) => theme.baseCard};
   padding: 40px;
   border-radius: 8px;
+`;
+
+export const Wrapper = styled(BaseWrapperCheckout)`
   gap: 32px;
 `;
 
@@ -14,7 +23,10 @@ export const Description = styled.div`
   align-items: flex-start;
   gap: 8px;
   svg {
-    color: ${({ theme }) => theme.yellowDark};
+    color: ${(props) =>
+      props.svgColor === "yellow"
+        ? props.theme.yellowDark
+        : props.theme.purpleDark};
   }
   div {
     display: flex;
@@ -48,4 +60,35 @@ export const Form = styled.form`
     gap: 12px;
   }
   margin-bottom: 40px;
+`;
+
+export const PaymentWrapper = styled(BaseWrapperCheckout)`
+  gap: 32px;
+`;
+
+export const PaymentMethodsWrapper = styled.div`
+  display: flex;
+  gap: 12px;
+  button {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-transform: uppercase;
+    color: ${({ theme }) => theme.baseText};
+    font-size: 0.75rem;
+    line-height: 1.6;
+    background: ${({ theme }) => theme.baseButton};
+    padding: 16px;
+    border-radius: 4px;
+    transition: all 0.3s ease-in;
+    &:hover {
+      background: ${({ theme }) => theme.baseHover};
+      color: ${({ theme }) => theme.baseSubtitle};
+    }
+    svg {
+      color: ${({ theme }) => theme.purple};
+    }
+  }
 `;

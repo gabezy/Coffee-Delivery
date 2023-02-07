@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  AmountContainer,
   BuyButton,
   CoffeeBuy,
   CoffeeCard,
@@ -13,6 +12,7 @@ import { ShoppingCart } from "phosphor-react";
 import { Link } from "react-router-dom";
 import { CoffeeProps } from "../..";
 import { AppContext } from "../../../../../contexts/AppContext";
+import { AmountButton } from "../../../../../components/AmountButton";
 
 export const Coffee = ({
   imageURL,
@@ -40,9 +40,8 @@ export const Coffee = ({
       title,
       amount: amountCoffee,
       price: Number(price.replace(",", ".")),
+      imageURL: imageURL,
     };
-    console.log({ amountCoffee });
-    console.log(newCoffee);
 
     addNewCoffee(newCoffee);
   };
@@ -62,11 +61,11 @@ export const Coffee = ({
           R$<span>{price}</span>
         </div>
         <div className="amount">
-          <AmountContainer>
-            <button onClick={handleRemoveCoffee}>−</button>
-            <span>{amountCoffee}</span>
-            <button onClick={handleAddCoffee}>+</button>
-          </AmountContainer>
+          <AmountButton
+            handleClickIncrease={handleAddCoffee}
+            handleClickDecrease={handleRemoveCoffee}
+            amount={amountCoffee}
+          />
           <BuyButton type="button" onClick={handleBuyCoffee}>
             <ShoppingCart size={20} weight="fill" />
           </BuyButton>

@@ -7,15 +7,14 @@ import { AppContext } from "../../contexts/AppContext";
 
 export const Header = () => {
   const { totalAmountOfCoffees } = React.useContext(AppContext);
-  const [total, setTotal] = React.useState(0);
+  const [totalCartItems, setTotalCartItems] = React.useState(0);
 
   React.useEffect(() => {
-    let totalCoffees = 0;
     if (totalAmountOfCoffees.length > 0) {
-      for (const coffee of totalAmountOfCoffees) {
-        totalCoffees += coffee.amount;
-      }
-      setTotal(totalCoffees);
+      const total = totalAmountOfCoffees.reduce((acc, valeu) => {
+        return acc + valeu.amount;
+      }, 0);
+      setTotalCartItems(total);
     }
   }, [totalAmountOfCoffees]);
 
@@ -30,7 +29,9 @@ export const Header = () => {
             <MapPin size={24} weight="fill" /> Porto Alegre, RS
           </span>
           <Link to={"/checkout"}>
-            {total > 0 && <div className="total">{total}</div>}
+            {totalCartItems > 0 && (
+              <div className="total">{totalCartItems}</div>
+            )}
             <ShoppingCart size={24} weight="fill" />
           </Link>
         </HeaderBox>
