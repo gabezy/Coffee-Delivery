@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const CheckoutFormContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
 `;
 
-const BaseWrapperCheckout = styled.div`
+const BaseContainerCheckout = styled.div`
   display: flex;
   flex-direction: column;
   background: ${({ theme }) => theme.baseCard};
@@ -14,11 +14,15 @@ const BaseWrapperCheckout = styled.div`
   border-radius: 8px;
 `;
 
-export const Wrapper = styled(BaseWrapperCheckout)`
+export const AddressContainer = styled(BaseContainerCheckout)`
   gap: 32px;
 `;
 
-export const Description = styled.div`
+interface DescriptionProps {
+  readonly svgColor?: "yellow";
+}
+
+export const Description = styled.div<DescriptionProps>`
   display: flex;
   align-items: flex-start;
   gap: 8px;
@@ -44,7 +48,7 @@ export const Description = styled.div`
   }
 `;
 
-export const Form = styled.form`
+export const AddressInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 60px;
@@ -62,11 +66,11 @@ export const Form = styled.form`
   margin-bottom: 40px;
 `;
 
-export const PaymentWrapper = styled(BaseWrapperCheckout)`
+export const PaymentContainer = styled(BaseContainerCheckout)`
   gap: 32px;
 `;
 
-export const PaymentMethodsWrapper = styled.div`
+export const PaymentMethodsContainer = styled.div`
   display: flex;
   gap: 12px;
   button {

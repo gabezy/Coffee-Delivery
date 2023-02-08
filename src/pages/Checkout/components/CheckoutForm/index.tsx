@@ -8,18 +8,19 @@ import {
 } from "phosphor-react";
 import { FormInput } from "../../../../components/FormInput";
 import {
-  Container,
+  CheckoutFormContainer,
   Description,
-  Form,
-  PaymentMethodsWrapper,
-  PaymentWrapper,
-  Wrapper,
+  AddressContainer,
+  PaymentContainer,
+  PaymentMethodsContainer,
+  AddressInfoContainer,
 } from "./styles";
+import { useFormContext } from "react-hook-form";
 
 export const CheckoutForm = () => {
   return (
-    <Container>
-      <Wrapper>
+    <CheckoutFormContainer>
+      <AddressContainer>
         <Description svgColor="yellow">
           <MapPinLine size={25} />
           <div>
@@ -29,7 +30,7 @@ export const CheckoutForm = () => {
             </span>
           </div>
         </Description>
-        <Form>
+        <AddressInfoContainer>
           <FormInput label="CEP" type="text" id="cep" />
           <FormInput label="Rua" type="text" id="rua" />
 
@@ -42,9 +43,9 @@ export const CheckoutForm = () => {
             <FormInput label="Cidade" type="text" id="cidade" />
             <FormInput label="UF" type="text" id="uf" />
           </div>
-        </Form>
-      </Wrapper>
-      <PaymentWrapper>
+        </AddressInfoContainer>
+      </AddressContainer>
+      <PaymentContainer>
         <Description>
           <CurrencyDollar size={25} />
           <div>
@@ -54,7 +55,7 @@ export const CheckoutForm = () => {
             </span>
           </div>
         </Description>
-        <PaymentMethodsWrapper>
+        <PaymentMethodsContainer>
           <button>
             <CreditCard size={25} />
             Cartão de Crédito
@@ -67,8 +68,8 @@ export const CheckoutForm = () => {
             <Money size={25} />
             Dinheiro
           </button>
-        </PaymentMethodsWrapper>
-      </PaymentWrapper>
-    </Container>
+        </PaymentMethodsContainer>
+      </PaymentContainer>
+    </CheckoutFormContainer>
   );
 };

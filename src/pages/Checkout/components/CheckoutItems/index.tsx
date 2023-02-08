@@ -1,5 +1,6 @@
 import React from "react";
-import { AppContext, Coffee } from "../../../../contexts/AppContext";
+import { useNavigate } from "react-router-dom";
+import { AppContext } from "../../../../contexts/AppContext";
 import { Button } from "../../../../styles/global";
 import { Item } from "./Item";
 import { CheckoutInfo, ItemsContainer, Label, Price } from "./styles";
@@ -55,7 +56,7 @@ export const CheckoutItems = () => {
             <Price>R$ {formattedTotalSum}</Price>
           </div>
         </CheckoutInfo>
-        <Button>Confirmar Pedido</Button>
+        <Button type="submit">Confirmar Pedido</Button>
       </ItemsContainer>
     );
   else return null;

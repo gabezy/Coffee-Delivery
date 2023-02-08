@@ -41,7 +41,6 @@ export const BaseTitle = styled.h1`
   font-family: "Baloo 2", cursive;
   font-weight: 800;
   line-height: 1.3;
-  color: ${({ theme }) => theme.baseTitle};
 `;
 
 export const Button = styled.button`

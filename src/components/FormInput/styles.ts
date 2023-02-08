@@ -36,7 +36,11 @@ export const InputContainer = styled.div`
     &:hover + label {
       background: ${({ theme }) => theme.baseCard};
     }
+    &.cep {
+      width: 200px;
+    }
   }
+
   label {
     position: absolute;
     top: 8px;

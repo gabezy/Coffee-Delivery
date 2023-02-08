@@ -8,6 +8,7 @@ export const CoffeesContainer = styled.main`
 export const CoffeesTitle = styled(BaseTitle)`
   font-size: 2rem;
   margin-bottom: calc(54px - 20px);
+  color: ${({ theme }) => theme.baseTitle};
 `;
 
 export const CoffeesList = styled.ul`
