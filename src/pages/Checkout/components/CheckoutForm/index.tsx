@@ -15,8 +15,14 @@ import {
   PaymentMethodsContainer,
   AddressInfoContainer,
 } from "./styles";
+import { FormRadioInput } from "../../../../components/FormRadioInput";
+import { useFormContext } from "react-hook-form";
 
 export const CheckoutForm = () => {
+  const {
+    formState: { errors },
+  } = useFormContext();
+
   return (
     <CheckoutFormContainer>
       <AddressContainer>
@@ -30,7 +36,12 @@ export const CheckoutForm = () => {
           </div>
         </Description>
         <AddressInfoContainer>
-          <FormInput label="CEP" type="text" id="cep" />
+          <FormInput
+            label="CEP"
+            type="text"
+            id="cep"
+            error={errors.cep?.message}
+          />
           <FormInput label="Rua" type="text" id="rua" />
 
           <div className="addressUpper">
@@ -61,18 +72,18 @@ export const CheckoutForm = () => {
           </div>
         </Description>
         <PaymentMethodsContainer>
-          <button>
+          <FormRadioInput id="credito" name="pagamento" value="credito">
             <CreditCard size={25} />
             Cartão de Crédito
-          </button>
-          <button>
+          </FormRadioInput>
+          <FormRadioInput id="debito" name="pagamento" value="debito">
             <Bank size={25} />
             Cartão de Débito
-          </button>
-          <button>
+          </FormRadioInput>
+          <FormRadioInput id="dinheiro" name="pagamento" value="dinheiro">
             <Money size={25} />
             Dinheiro
-          </button>
+          </FormRadioInput>
         </PaymentMethodsContainer>
       </PaymentContainer>
     </CheckoutFormContainer>

@@ -57,3 +57,8 @@ export const Button = styled.button`
     background: ${({ theme }) => theme.yellowDark};
   }
 `;
+
+export const ErrorMessage = styled.p`
+  color: #d35400;
+  font-size: 0.875rem;
+`;

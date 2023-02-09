@@ -7,6 +7,8 @@ import { Form } from "./styles";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
 
+const payments = ["credito", "debito", "dinheiro"];
+
 const checkoutFormDataValidationSchema = zod.object({
   cep: zod
     .string()
@@ -17,6 +19,7 @@ const checkoutFormDataValidationSchema = zod.object({
   bairro: zod.string().min(1, "bairro"),
   cidade: zod.string().min(1, "cidade"),
   uf: zod.string().min(2, "uf").max(2, "uf"),
+  pagamento: zod.string().refine((val) => payments.includes(val)),
 });
 
 type checkoutFormData = zod.infer<typeof checkoutFormDataValidationSchema>;
@@ -31,12 +34,11 @@ export const Checkout = () => {
       bairro: "",
       cidade: "",
       uf: "",
+      pagamento: "",
     },
   });
 
-  const { handleSubmit, formState, reset } = checkoutOrderData;
-
-  console.log(formState.errors);
+  const { handleSubmit, watch, reset } = checkoutOrderData;
 
   const createCheckoutOrder = (data: checkoutFormData) => {
     console.log(data);
@@ -51,6 +53,7 @@ export const Checkout = () => {
         </FormProvider>
         <CheckoutItems />
       </Form>
+      <pre>{JSON.stringify(watch(), null, 2)}</pre>
     </Container>
   );
 };

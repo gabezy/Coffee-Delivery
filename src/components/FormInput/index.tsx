@@ -1,6 +1,7 @@
 import React from "react";
-import { FieldValues, useFormContext, UseFormRegister } from "react-hook-form";
-import { InputContainer } from "./styles";
+import { useFormContext } from "react-hook-form";
+import { ErrorMessage } from "../../styles/global";
+import { InputContainer, InputForm, LabelInputForm } from "./styles";
 
 type FormInputProps = {
   label: string;
@@ -8,6 +9,7 @@ type FormInputProps = {
   id: string;
   inputmode?: boolean;
   parttern?: string;
+  error?: any;
 };
 
 export const FormInput = ({
@@ -16,21 +18,25 @@ export const FormInput = ({
   id,
   parttern,
   inputmode,
+  error,
 }: FormInputProps) => {
   const { register } = useFormContext();
 
   return (
     <InputContainer>
-      <input
-        type={type}
-        id={id}
-        placeholder=" "
-        {...register(id)}
-        pattern={parttern}
-        inputMode={inputmode ? "numeric" : "text"}
-        className={id === "cep" ? "cep" : ""}
-      />
-      <label htmlFor={id}>{label}</label>
+      <div className="inputWrapper">
+        <InputForm
+          type={type}
+          id={id}
+          placeholder=" "
+          {...register(id)}
+          pattern={parttern}
+          inputMode={inputmode ? "numeric" : "text"}
+          className={id === "cep" ? "cep" : ""}
+        />
+        <LabelInputForm htmlFor={id}>{label}</LabelInputForm>
+      </div>
+      {error && <ErrorMessage>{error}</ErrorMessage>}
     </InputContainer>
   );
 };

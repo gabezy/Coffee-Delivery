@@ -73,26 +73,4 @@ export const PaymentContainer = styled(BaseContainerCheckout)`
 export const PaymentMethodsContainer = styled.div`
   display: flex;
   gap: 12px;
-  button {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    text-transform: uppercase;
-    color: ${({ theme }) => theme.baseText};
-    font-size: 0.75rem;
-    line-height: 1.6;
-    background: ${({ theme }) => theme.baseButton};
-    padding: 16px;
-    border-radius: 4px;
-    transition: all 0.3s ease-in;
-    &:hover {
-      background: ${({ theme }) => theme.baseHover};
-      color: ${({ theme }) => theme.baseSubtitle};
-    }
-    svg {
-      color: ${({ theme }) => theme.purple};
-    }
-  }
 `;
