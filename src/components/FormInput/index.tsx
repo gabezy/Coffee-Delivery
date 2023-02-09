@@ -6,9 +6,17 @@ type FormInputProps = {
   label: string;
   type: string;
   id: string;
+  inputmode?: boolean;
+  parttern?: string;
 };
 
-export const FormInput = ({ label, type, id }: FormInputProps) => {
+export const FormInput = ({
+  label,
+  type,
+  id,
+  parttern,
+  inputmode,
+}: FormInputProps) => {
   const { register } = useFormContext();
 
   return (
@@ -18,6 +26,8 @@ export const FormInput = ({ label, type, id }: FormInputProps) => {
         id={id}
         placeholder=" "
         {...register(id)}
+        pattern={parttern}
+        inputMode={inputmode ? "numeric" : "text"}
         className={id === "cep" ? "cep" : ""}
       />
       <label htmlFor={id}>{label}</label>

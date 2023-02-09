@@ -15,7 +15,6 @@ import {
   PaymentMethodsContainer,
   AddressInfoContainer,
 } from "./styles";
-import { useFormContext } from "react-hook-form";
 
 export const CheckoutForm = () => {
   return (
@@ -35,7 +34,13 @@ export const CheckoutForm = () => {
           <FormInput label="Rua" type="text" id="rua" />
 
           <div className="addressUpper">
-            <FormInput label="Número" type="number" id="numero" />
+            <FormInput
+              label="Número"
+              type="text"
+              id="numero"
+              parttern="[0-9]+"
+              inputmode
+            />
             <FormInput label="Complemento" type="text" id="complemento" />
           </div>
           <div className="addressLower">
