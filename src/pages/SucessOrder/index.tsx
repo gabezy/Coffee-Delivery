@@ -8,8 +8,13 @@ import {
 } from "./styles";
 import banner from "../../assets/success-order-banner.png";
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
+import { AppContext } from "../../contexts/AppContext";
 
 export const SuccessOrder = () => {
+  const {
+    checkoutOrderDataObject: { rua, numero, pagamento, bairro, cidade, uf },
+  } = React.useContext(AppContext);
+
   return (
     <Container>
       <SucessOrderContainer>
@@ -23,8 +28,12 @@ export const SuccessOrder = () => {
               <MapPin size={30} className="purple" />
               <ListInfoParagraph>
                 Entrega para{" "}
-                <span className="street">Rua João Daniel Martinelli, 102</span>
-                <span className="complement">Farrapos - Porto Alegre, RS</span>
+                <span className="street">
+                  {rua}, {numero}
+                </span>
+                <span className="complement">
+                  {bairro} - {cidade}, {uf}
+                </span>
               </ListInfoParagraph>
             </li>
             <li>
@@ -36,7 +45,7 @@ export const SuccessOrder = () => {
             <li>
               <CurrencyDollar size={30} className="orange" />
               <ListInfoParagraph>
-                Pagamento na entrega <span>Cartão de Crédito</span>
+                Pagamento na entrega <span>{pagamento}</span>
               </ListInfoParagraph>
             </li>
           </ul>

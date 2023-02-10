@@ -72,15 +72,19 @@ export const CheckoutForm = () => {
           </div>
         </Description>
         <PaymentMethodsContainer>
-          <FormRadioInput id="credito" name="pagamento" value="credito">
+          <FormRadioInput
+            id="credito"
+            name="pagamento"
+            value="Cartão de Crédito"
+          >
             <CreditCard size={25} />
             Cartão de Crédito
           </FormRadioInput>
-          <FormRadioInput id="debito" name="pagamento" value="debito">
+          <FormRadioInput id="debito" name="pagamento" value="Cartão de Débito">
             <Bank size={25} />
             Cartão de Débito
           </FormRadioInput>
-          <FormRadioInput id="dinheiro" name="pagamento" value="dinheiro">
+          <FormRadioInput id="dinheiro" name="pagamento" value="Dinheiro">
             <Money size={25} />
             Dinheiro
           </FormRadioInput>
