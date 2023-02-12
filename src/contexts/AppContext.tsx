@@ -1,3 +1,4 @@
+import { Coffee } from "phosphor-react";
 import React, { ReactNode } from "react";
 import { checkoutFormData } from "../pages/Checkout";
 
@@ -12,8 +13,11 @@ type AppContextProps = {
   totalAmountOfCoffees: Coffee[];
   checkoutOrderDataObject: checkoutFormData;
   addNewCoffee: (data: Coffee) => void;
-  removeItem: (data: Coffee) => void;
+  removeItem: (title: string) => void;
+  increaseAmount: (title: string) => void;
+  decreaseAmount: (title: string) => void;
   createCheckoutOrder: (data: checkoutFormData) => void;
+  resetTotalAmountOfCoffees: () => void;
 };
 
 export const AppContext = React.createContext({} as AppContextProps);
@@ -52,10 +56,32 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
     setTotalAmountOfCoffees((prev) => [...prev, newCoffee]);
   };
 
-  const removeItem = (data: Coffee) => {
+  const removeItem = (title: string) => {
     setTotalAmountOfCoffees((prev) => {
       if (prev.length <= 0) return prev;
-      return prev.filter((coffee) => coffee.title !== data.title);
+      return prev.filter((coffee) => coffee.title !== title);
+    });
+  };
+
+  const increaseAmount = (title: string) => {
+    setTotalAmountOfCoffees((prev) => {
+      return prev.map((coffee) => {
+        if (coffee.title === title) {
+          const newAmount = coffee.amount + 1;
+          return { ...coffee, amount: newAmount };
+        } else return coffee;
+      });
+    });
+  };
+
+  const decreaseAmount = (title: string) => {
+    setTotalAmountOfCoffees((prev) => {
+      return prev.map((coffee) => {
+        if (coffee.title === title && coffee.amount > 1) {
+          const newAmount = coffee.amount - 1;
+          return { ...coffee, amount: newAmount };
+        } else return coffee;
+      });
     });
   };
 
@@ -74,6 +100,10 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
     setCheckoutOrderDataObject(checkoutOrder);
   };
 
+  const resetTotalAmountOfCoffees = () => {
+    setTotalAmountOfCoffees([]);
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -81,7 +111,10 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
         checkoutOrderDataObject,
         addNewCoffee,
         removeItem,
+        increaseAmount,
+        decreaseAmount,
         createCheckoutOrder,
+        resetTotalAmountOfCoffees,
       }}
     >
       {children}

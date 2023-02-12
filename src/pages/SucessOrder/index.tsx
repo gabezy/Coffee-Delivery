@@ -13,7 +13,12 @@ import { AppContext } from "../../contexts/AppContext";
 export const SuccessOrder = () => {
   const {
     checkoutOrderDataObject: { rua, numero, pagamento, bairro, cidade, uf },
+    resetTotalAmountOfCoffees,
   } = React.useContext(AppContext);
+
+  React.useEffect(() => {
+    resetTotalAmountOfCoffees();
+  }, []);
 
   return (
     <Container>

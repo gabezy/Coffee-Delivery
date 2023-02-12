@@ -17,7 +17,7 @@ export const CheckoutItems = () => {
       }, 0);
       setTotalCoffeesPrice(totalPriceCoffees);
     }
-  }, [totalAmountOfCoffees]);
+  }, [totalAmountOfCoffees, setTotalCoffeesPrice]);
 
   const numberToString = (n: number) => {
     return n.toFixed(2).replace(".", ",");
@@ -34,13 +34,8 @@ export const CheckoutItems = () => {
     return (
       <ItemsContainer>
         {totalAmountOfCoffees.map((coffee) => (
-          <Item
-            key={coffee.title}
-            amount={coffee.amount}
-            imageURL={coffee.imageURL}
-            price={coffee.price}
-            title={coffee.title}
-          />
+          <Item key={coffee.title} {...coffee} />
+          // <Item key={coffee.title} coffee={coffee} />
         ))}
         <CheckoutInfo>
           <div>

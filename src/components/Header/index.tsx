@@ -10,13 +10,11 @@ export const Header = () => {
   const [totalCartItems, setTotalCartItems] = React.useState(0);
 
   React.useEffect(() => {
-    if (totalAmountOfCoffees.length > 0) {
-      const total = totalAmountOfCoffees.reduce((acc, valeu) => {
-        return acc + valeu.amount;
-      }, 0);
-      setTotalCartItems(total);
-    }
-  }, [totalAmountOfCoffees]);
+    const total = totalAmountOfCoffees.reduce((acc, valeu) => {
+      return acc + valeu.amount;
+    }, 0);
+    setTotalCartItems(total);
+  }, [totalAmountOfCoffees, setTotalCartItems]);
 
   return (
     <HeaderContainer>
