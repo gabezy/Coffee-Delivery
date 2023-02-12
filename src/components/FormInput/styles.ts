@@ -9,7 +9,11 @@ export const InputContainer = styled.div`
   }
 `;
 
-export const InputForm = styled.input`
+interface InputProps {
+  error?: string | undefined;
+}
+
+export const InputForm = styled.input<InputProps>`
   position: absolute;
   top: 0;
   left: 0;
@@ -27,6 +31,10 @@ export const InputForm = styled.input`
   &:focus {
     border-color: ${({ theme }) => theme.yellowDark};
     background: ${({ theme }) => theme.baseCard};
+  }
+  &:focus {
+    border-color: ${(props) =>
+      props.error ? "#E74C3C" : props.theme.yellowDark};
   }
   &:not(:placeholder-shown) {
     background: ${({ theme }) => theme.baseCard};

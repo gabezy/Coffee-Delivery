@@ -9,7 +9,7 @@ type FormInputProps = {
   id: string;
   inputmode?: boolean;
   parttern?: string;
-  error?: any;
+  optional?: boolean;
 };
 
 export const FormInput = ({
@@ -18,9 +18,13 @@ export const FormInput = ({
   id,
   parttern,
   inputmode,
-  error,
 }: FormInputProps) => {
-  const { register } = useFormContext();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
+
+  const error = errors[id]?.message;
 
   return (
     <InputContainer>
@@ -33,10 +37,11 @@ export const FormInput = ({
           pattern={parttern}
           inputMode={inputmode ? "numeric" : "text"}
           className={id === "cep" ? "cep" : ""}
+          error={error?.toString()}
+          autoComplete="off"
         />
         <LabelInputForm htmlFor={id}>{label}</LabelInputForm>
       </div>
-      {error && <ErrorMessage>{error}</ErrorMessage>}
     </InputContainer>
   );
 };

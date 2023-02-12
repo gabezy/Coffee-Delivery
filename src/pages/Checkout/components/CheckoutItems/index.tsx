@@ -34,7 +34,7 @@ export const CheckoutItems = () => {
     return (
       <ItemsContainer>
         {totalAmountOfCoffees.map((coffee) => (
-          <Item key={coffee.title} {...coffee} />
+          <Item key={coffee.id} {...coffee} />
           // <Item key={coffee.title} coffee={coffee} />
         ))}
         <CheckoutInfo>
