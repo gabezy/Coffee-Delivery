@@ -3,6 +3,7 @@ import React, { ReactNode } from "react";
 import { checkoutFormData } from "../pages/Checkout";
 
 export type Coffee = {
+  id: string;
   title: string;
   amount: number;
   price: number;
@@ -46,7 +47,9 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
     React.useState<checkoutFormData>(emptyCheckoutDataObject);
 
   const addNewCoffee = (data: Coffee) => {
+    const id = String(new Date().getTime());
     const newCoffee: Coffee = {
+      id,
       title: data.title,
       amount: data.amount,
       price: data.price,
@@ -56,17 +59,17 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
     setTotalAmountOfCoffees((prev) => [...prev, newCoffee]);
   };
 
-  const removeItem = (title: string) => {
+  const removeItem = (id: string) => {
     setTotalAmountOfCoffees((prev) => {
       if (prev.length <= 0) return prev;
-      return prev.filter((coffee) => coffee.title !== title);
+      return prev.filter((coffee) => coffee.id !== id);
     });
   };
 
-  const increaseAmount = (title: string) => {
+  const increaseAmount = (id: string) => {
     setTotalAmountOfCoffees((prev) => {
       return prev.map((coffee) => {
-        if (coffee.title === title) {
+        if (coffee.id === id) {
           const newAmount = coffee.amount + 1;
           return { ...coffee, amount: newAmount };
         } else return coffee;
@@ -74,10 +77,10 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
     });
   };
 
-  const decreaseAmount = (title: string) => {
+  const decreaseAmount = (id: string) => {
     setTotalAmountOfCoffees((prev) => {
       return prev.map((coffee) => {
-        if (coffee.title === title && coffee.amount > 1) {
+        if (coffee.id === id && coffee.amount > 1) {
           const newAmount = coffee.amount - 1;
           return { ...coffee, amount: newAmount };
         } else return coffee;

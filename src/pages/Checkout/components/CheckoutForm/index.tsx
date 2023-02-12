@@ -16,13 +16,8 @@ import {
   AddressInfoContainer,
 } from "./styles";
 import { FormRadioInput } from "../../../../components/FormRadioInput";
-import { useFormContext } from "react-hook-form";
 
 export const CheckoutForm = () => {
-  const {
-    formState: { errors },
-  } = useFormContext();
-
   return (
     <CheckoutFormContainer>
       <AddressContainer>
@@ -36,12 +31,7 @@ export const CheckoutForm = () => {
           </div>
         </Description>
         <AddressInfoContainer>
-          <FormInput
-            label="CEP"
-            type="text"
-            id="cep"
-            error={errors.cep?.message}
-          />
+          <FormInput label="CEP" type="text" id="cep" />
           <FormInput label="Rua" type="text" id="rua" />
 
           <div className="addressUpper">
