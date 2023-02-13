@@ -7,7 +7,10 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-    background: ${({ theme }) => theme.background}
+    background: ${({ theme }) => theme.background};
+    width: 100%;
+    height: 100vh;
+
   }
   body, input, textarea, button {
     font-size: 1rem;
@@ -23,6 +26,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
   }
+
   button {
     cursor: pointer;
     background: transparent;
@@ -58,7 +62,7 @@ export const Button = styled.button`
   }
 `;
 
-export const ErrorMessage = styled.p`
-  color: #d35400;
-  font-size: 0.875rem;
-`;
+// export const ErrorMessage = styled.p`
+//   color: #d35400;
+//   font-size: 0.875rem;
+// `;
