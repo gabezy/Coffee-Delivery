@@ -34,7 +34,7 @@ export const IntroContent = styled.div`
   }
 `;
 
-export const IntroList = styled.li`
+export const IntroList = styled.ul`
   margin-top: 56px;
   display: flex;
   flex-wrap: wrap;
