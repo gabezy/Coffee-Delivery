@@ -16,6 +16,7 @@ export const RadioInput = styled.input.attrs({ type: "radio" })`
 `;
 
 export const RadioLabel = styled.label`
+  flex: 1 1 150px;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -62,6 +62,17 @@ export const Button = styled.button`
   }
 `;
 
+export const ICON_COLORS = {
+  orange: "yellowDark",
+  yellow: "yellow",
+  purple: "purple",
+  gray: "baseText",
+} as const;
+
+export interface ListItemProps {
+  iconBackgroud: keyof typeof ICON_COLORS;
+}
+
 // export const ErrorMessage = styled.p`
 //   color: #d35400;
 //   font-size: 0.875rem;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { BaseTitle } from "../../../styles/global";
+import { BaseTitle, ICON_COLORS, ListItemProps } from "../../../styles/global";
 
 export const IntroContainer = styled.article`
   margin-top: 60px;
@@ -52,17 +52,6 @@ export const IntroList = styled.li`
     margin-inline: auto;
   }
 `;
-
-const ICON_COLORS = {
-  orange: "yellowDark",
-  yellow: "yellow",
-  purple: "purple",
-  gray: "baseText",
-} as const;
-
-interface ListItemProps {
-  iconBackgroud: keyof typeof ICON_COLORS;
-}
 
 export const ListItem = styled.li<ListItemProps>`
   display: flex;

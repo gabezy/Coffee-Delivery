@@ -1,7 +1,9 @@
 import React from "react";
 import { Container } from "../../styles/global";
 import {
+  ItemListOrder,
   ListInfoParagraph,
+  ListOrder,
   SucessOrderContainer,
   SucessOrderInfoContainer,
   SucessOrderTitle,
@@ -28,9 +30,9 @@ export const SuccessOrder = () => {
           Agora é só aguardar que logo o café chegará até você
         </p>
         <SucessOrderInfoContainer>
-          <ul className="listInfo">
-            <li>
-              <MapPin size={30} className="purple" />
+          <ListOrder className="listInfo">
+            <ItemListOrder iconBackgroud="purple">
+              <MapPin size={30} />
               <ListInfoParagraph>
                 Entrega para{" "}
                 <span className="street">
@@ -40,21 +42,23 @@ export const SuccessOrder = () => {
                   {bairro} - {cidade}, {uf}
                 </span>
               </ListInfoParagraph>
-            </li>
-            <li>
-              <Timer size={30} className="yellow" />
+            </ItemListOrder>
+            <ItemListOrder iconBackgroud="yellow">
+              <Timer size={30} />
               <ListInfoParagraph>
                 Previsão de entrega <span>20 min - 30 min</span>
               </ListInfoParagraph>
-            </li>
-            <li>
-              <CurrencyDollar size={30} className="orange" />
+            </ItemListOrder>
+            <ItemListOrder iconBackgroud="orange">
+              <CurrencyDollar size={30} />
               <ListInfoParagraph>
                 Pagamento na entrega <span>{pagamento}</span>
               </ListInfoParagraph>
-            </li>
-          </ul>
-          <img src={banner} alt="" />
+            </ItemListOrder>
+          </ListOrder>
+          <div className="bannerContainer">
+            <img src={banner} alt="" />
+          </div>
         </SucessOrderInfoContainer>
       </SucessOrderContainer>
     </Container>

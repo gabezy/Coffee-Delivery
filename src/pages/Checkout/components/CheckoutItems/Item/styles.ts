@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ItemWrapper = styled.div`
+export const ItemContainer = styled.div`
   display: flex;
   width: 100%;
   gap: 20px;
@@ -12,25 +12,28 @@ export const ItemWrapper = styled.div`
     width: 64px;
     height: 64px;
   }
-  .info {
-    display: flex;
+  @media ${({ theme }) => theme.mobile} {
     flex-direction: column;
-    .titleItem {
-      line-height: 1.3;
-      color: ${({ theme }) => theme.baseSubtitle};
-      margin-bottom: 8px;
-    }
-    div {
-      display: flex;
-      gap: 8px;
+    align-items: flex-start;
+    img {
+      display: none;
     }
   }
-  .price {
-    flex: 1;
-    text-align: end;
-    justify-self: flex-end;
-    align-self: flex-start;
+`;
+
+export const ItemContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  .titleItem {
+    line-height: 1.3;
+    color: ${({ theme }) => theme.baseSubtitle};
+    margin-bottom: 8px;
   }
+  div {
+    display: flex;
+    gap: 8px;
+  }
+
   & + & {
     margin-top: 24px;
   }
@@ -51,4 +54,11 @@ export const RemoveItemButton = styled.button`
   svg {
     color: ${({ theme }) => theme.purple};
   }
+`;
+
+export const Price = styled.span`
+  flex: 1;
+  text-align: end;
+  justify-self: flex-end;
+  align-self: flex-start;
 `;

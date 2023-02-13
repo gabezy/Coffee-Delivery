@@ -2,7 +2,12 @@ import React from "react";
 import { Trash } from "phosphor-react";
 import { AmountButton } from "../../../../../components/AmountButton";
 import { AppContext, Coffee } from "../../../../../contexts/AppContext";
-import { ItemWrapper, RemoveItemButton } from "./styles";
+import {
+  ItemContainer,
+  ItemContentContainer,
+  Price,
+  RemoveItemButton,
+} from "./styles";
 
 export const Item = ({ imageURL, price, title, amount, id }: Coffee) => {
   const stringPrice = price.toFixed(2).replace(".", ",");
@@ -24,9 +29,9 @@ export const Item = ({ imageURL, price, title, amount, id }: Coffee) => {
   };
 
   return (
-    <ItemWrapper>
+    <ItemContainer>
       <img src={imageURL} alt="" />
-      <div className="info">
+      <ItemContentContainer>
         <p className="titleItem">{title}</p>
         <div>
           <AmountButton
@@ -39,8 +44,8 @@ export const Item = ({ imageURL, price, title, amount, id }: Coffee) => {
             Remover
           </RemoveItemButton>
         </div>
-      </div>
-      <span className="price">R$ {stringPrice}</span>
-    </ItemWrapper>
+      </ItemContentContainer>
+      <Price>R$ {stringPrice}</Price>
+    </ItemContainer>
   );
 };
