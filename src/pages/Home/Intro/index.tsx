@@ -1,6 +1,13 @@
 import React from "react";
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
-import { IntroContainer, IntroContent, IntroTitle } from "./styles";
+import {
+  BannerContainer,
+  IntroContainer,
+  IntroContent,
+  IntroList,
+  IntroTitle,
+  ListItem,
+} from "./styles";
 import coffeeBanner from "../../../assets/banner.png";
 
 export const Intro = () => {
@@ -16,26 +23,28 @@ export const Intro = () => {
           Com o Coffee Delivery você recebe seu café onde estiver
           <br />a qualquer hora
         </p>
-        <ul className="introList">
-          <li>
+        <IntroList>
+          <ListItem iconBackgroud="orange">
             <ShoppingCart weight="fill" size={25} className="orange" />
             Compra simples e segura
-          </li>
-          <li>
+          </ListItem>
+          <ListItem iconBackgroud="gray">
             <Package weight="fill" size={25} className="gray" />
             Embalagem mantém o café intacto
-          </li>
-          <li>
+          </ListItem>
+          <ListItem iconBackgroud="yellow">
             <Timer weight="fill" size={25} className="yellow" />
             Entrega rápida e rastreada
-          </li>
-          <li>
+          </ListItem>
+          <ListItem iconBackgroud="purple">
             <Coffee weight="fill" size={25} className="purple" />O café chega
             fresquinho até você
-          </li>
-        </ul>
+          </ListItem>
+        </IntroList>
       </IntroContent>
-      <img src={coffeeBanner} />
+      <BannerContainer>
+        <img src={coffeeBanner} />
+      </BannerContainer>
     </IntroContainer>
   );
 };

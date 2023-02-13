@@ -15,4 +15,6 @@ export const lightTheme = {
   baseCard: "#F3F2F2",
   background: "#FAFAFA",
   white: "#FFFFFF",
+  table: "(max-width: 1000px)",
+  mobile: "(max-width: 600px)",
 };

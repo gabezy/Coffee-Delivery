@@ -2,7 +2,9 @@ import styled from "styled-components";
 import { BaseTitle } from "../../../styles/global";
 
 export const CoffeesContainer = styled.main`
-  margin-top: 50px;
+  margin-block: 50px;
+  flex: 1;
+  flex-direction: column;
 `;
 
 export const CoffeesTitle = styled(BaseTitle)`
@@ -12,7 +14,9 @@ export const CoffeesTitle = styled(BaseTitle)`
 `;
 
 export const CoffeesList = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px 0;
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
 `;

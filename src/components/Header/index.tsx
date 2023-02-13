@@ -1,5 +1,10 @@
 import React from "react";
-import { HeaderBox, HeaderContainer, HeaderNav } from "./styles";
+import {
+  HeaderBox,
+  HeaderContainer,
+  HeaderNav,
+  LocationContainer,
+} from "./styles";
 import coffeeLogo from "../../assets/logo-coffee.svg";
 import { MapPin, ShoppingCart } from "phosphor-react";
 import { Link } from "react-router-dom";
@@ -23,9 +28,10 @@ export const Header = () => {
           <img src={coffeeLogo} />
         </Link>
         <HeaderBox>
-          <span>
-            <MapPin size={24} weight="fill" /> Porto Alegre, RS
-          </span>
+          <LocationContainer>
+            <MapPin size={24} weight="fill" />
+            <span>Porto Alegre, RS</span>
+          </LocationContainer>
           <Link to={"/checkout"}>
             {totalCartItems > 0 && (
               <div className="total">{totalCartItems}</div>

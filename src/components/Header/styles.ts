@@ -15,19 +15,6 @@ export const HeaderBox = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
-  span {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 0.5rem;
-    background: ${({ theme }) => theme.purpleLight};
-    border-radius: 8px;
-    font-size: 0.875rem;
-    color: ${({ theme }) => theme.purpleDark};
-    svg {
-      color: ${({ theme }) => theme.purple};
-    }
-  }
   a {
     padding: 0.5rem;
     background: ${({ theme }) => theme.yellowLight};
@@ -50,6 +37,28 @@ export const HeaderBox = styled.div`
       font-weight: bold;
       background: ${({ theme }) => theme.yellowDark} !important;
       color: ${({ theme }) => theme.white} !important;
+    }
+    &:last-child {
+      margin-right: 8px;
+    }
+  }
+`;
+
+export const LocationContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.5rem;
+  background: ${({ theme }) => theme.purpleLight};
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: ${({ theme }) => theme.purpleDark};
+  svg {
+    color: ${({ theme }) => theme.purple};
+  }
+  @media screen and (max-width: 350px) {
+    span {
+      display: none;
     }
   }
 `;

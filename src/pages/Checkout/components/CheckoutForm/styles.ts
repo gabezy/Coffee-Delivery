@@ -4,6 +4,7 @@ export const CheckoutFormContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+  padding-inline: 8px;
 `;
 
 const BaseContainerCheckout = styled.div`
@@ -73,4 +74,10 @@ export const PaymentContainer = styled(BaseContainerCheckout)`
 export const PaymentMethodsContainer = styled.div`
   display: flex;
   gap: 12px;
+  @media ${({ theme }) => theme.table} {
+    justify-content: center;
+  }
+  @media ${({ theme }) => theme.mobile} {
+    flex-direction: column;
+  }
 `;
