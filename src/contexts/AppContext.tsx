@@ -1,17 +1,17 @@
-import { Coffee } from "phosphor-react";
 import React, { ReactNode } from "react";
 import { checkoutFormData } from "../pages/Checkout";
-
-export type Coffee = {
-  id: string;
-  title: string;
-  amount: number;
-  price: number;
-  imageURL: string;
-};
+import {
+  ActionTypes,
+  addNewCoffeeAction,
+  decreaseCoffeeAmountAction,
+  increaseCoffeeAmountAction,
+  removeCoffeeAction,
+  resetCoffeesAction,
+} from "../reducers/Coffees/actions";
+import { Coffee, coffeesReducer } from "../reducers/Coffees/reducer";
 
 type AppContextProps = {
-  totalAmountOfCoffees: Coffee[];
+  coffees: Coffee[];
   checkoutOrderDataObject: checkoutFormData;
   addNewCoffee: (data: Coffee) => void;
   removeItem: (title: string) => void;
@@ -39,9 +39,7 @@ const emptyCheckoutDataObject: checkoutFormData = {
 };
 
 export const AppContextProvider = ({ children }: AppContextProviderProps) => {
-  const [totalAmountOfCoffees, setTotalAmountOfCoffees] = React.useState<
-    Coffee[]
-  >([]);
+  const [coffees, dispatch] = React.useReducer(coffeesReducer, []);
 
   const [checkoutOrderDataObject, setCheckoutOrderDataObject] =
     React.useState<checkoutFormData>(emptyCheckoutDataObject);
@@ -55,37 +53,23 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
       price: data.price,
       imageURL: data.imageURL,
     };
-
-    setTotalAmountOfCoffees((prev) => [...prev, newCoffee]);
+    dispatch(addNewCoffeeAction(newCoffee));
   };
 
   const removeItem = (id: string) => {
-    setTotalAmountOfCoffees((prev) => {
-      if (prev.length <= 0) return prev;
-      return prev.filter((coffee) => coffee.id !== id);
-    });
+    dispatch(removeCoffeeAction(id));
   };
 
   const increaseAmount = (id: string) => {
-    setTotalAmountOfCoffees((prev) => {
-      return prev.map((coffee) => {
-        if (coffee.id === id) {
-          const newAmount = coffee.amount + 1;
-          return { ...coffee, amount: newAmount };
-        } else return coffee;
-      });
-    });
+    dispatch(increaseCoffeeAmountAction(id));
   };
 
   const decreaseAmount = (id: string) => {
-    setTotalAmountOfCoffees((prev) => {
-      return prev.map((coffee) => {
-        if (coffee.id === id && coffee.amount > 1) {
-          const newAmount = coffee.amount - 1;
-          return { ...coffee, amount: newAmount };
-        } else return coffee;
-      });
-    });
+    dispatch(decreaseCoffeeAmountAction(id));
+  };
+
+  const resetTotalAmountOfCoffees = () => {
+    dispatch(resetCoffeesAction());
   };
 
   const createCheckoutOrder = (data: checkoutFormData) => {
@@ -103,14 +87,10 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
     setCheckoutOrderDataObject(checkoutOrder);
   };
 
-  const resetTotalAmountOfCoffees = () => {
-    setTotalAmountOfCoffees([]);
-  };
-
   return (
     <AppContext.Provider
       value={{
-        totalAmountOfCoffees,
+        coffees,
         checkoutOrderDataObject,
         addNewCoffee,
         removeItem,

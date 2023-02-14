@@ -6,18 +6,18 @@ import { Item } from "./Item";
 import { CheckoutInfo, ItemsContainer, Label, Price } from "./styles";
 
 export const CheckoutItems = () => {
-  const { totalAmountOfCoffees } = React.useContext(AppContext);
+  const { coffees } = React.useContext(AppContext);
   const [totalCoffeesPrice, setTotalCoffeesPrice] = React.useState(0);
 
   React.useEffect(() => {
-    if (totalAmountOfCoffees.length) {
-      const totalPriceCoffees = totalAmountOfCoffees.reduce((acc, value) => {
+    if (coffees.length) {
+      const totalPriceCoffees = coffees.reduce((acc, value) => {
         const price = value.amount * value.price;
         return acc + price;
       }, 0);
       setTotalCoffeesPrice(totalPriceCoffees);
     }
-  }, [totalAmountOfCoffees, setTotalCoffeesPrice]);
+  }, [coffees, setTotalCoffeesPrice]);
 
   const numberToString = (n: number) => {
     return n.toFixed(2).replace(".", ",");
@@ -30,10 +30,10 @@ export const CheckoutItems = () => {
   const formattedDelivery = numberToString(deliveryPrice);
   const formattedTotalSum = numberToString(totalSum);
 
-  if (totalAmountOfCoffees.length)
+  if (coffees.length)
     return (
       <ItemsContainer>
-        {totalAmountOfCoffees.map((coffee) => (
+        {coffees.map((coffee) => (
           <Item key={coffee.id} {...coffee} />
           // <Item key={coffee.title} coffee={coffee} />
         ))}

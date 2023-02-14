@@ -11,15 +11,15 @@ import { Link } from "react-router-dom";
 import { AppContext } from "../../contexts/AppContext";
 
 export const Header = () => {
-  const { totalAmountOfCoffees } = React.useContext(AppContext);
+  const { coffees } = React.useContext(AppContext);
   const [totalCartItems, setTotalCartItems] = React.useState(0);
 
   React.useEffect(() => {
-    const total = totalAmountOfCoffees.reduce((acc, valeu) => {
+    const total = coffees.reduce((acc, valeu) => {
       return acc + valeu.amount;
     }, 0);
     setTotalCartItems(total);
-  }, [totalAmountOfCoffees, setTotalCartItems]);
+  }, [coffees, setTotalCartItems]);
 
   return (
     <HeaderContainer>
