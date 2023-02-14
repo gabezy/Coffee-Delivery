@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
 import { CoffeeContext } from "../../contexts/CoffeeContext";
 import { useNavigate } from "react-router-dom";
+import { CheckoutFormContext } from "../../contexts/CheckoutFormContext";
 
 const payments = ["Cartão de Crédito", "Cartão de Débito", "Dinheiro"];
 
@@ -44,7 +45,7 @@ export const Checkout = () => {
     },
   });
 
-  const { createCheckoutOrder } = useContext(CoffeeContext);
+  const { createCheckoutOrder } = useContext(CheckoutFormContext);
   const navigate = useNavigate();
 
   const { handleSubmit, reset } = checkoutOrderData;

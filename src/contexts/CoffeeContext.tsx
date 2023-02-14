@@ -11,12 +11,12 @@ import { Coffee, coffeesReducer } from "../reducers/Coffees/reducer";
 
 type CoffeeContextProps = {
   coffees: Coffee[];
-  checkoutOrderDataObject: checkoutFormData;
+  // checkoutOrderDataObject: checkoutFormData;
   addNewCoffee: (data: Coffee) => void;
   removeItem: (title: string) => void;
   increaseAmount: (title: string) => void;
   decreaseAmount: (title: string) => void;
-  createCheckoutOrder: (data: checkoutFormData) => void;
+  // createCheckoutOrder: (data: checkoutFormData) => void;
   resetTotalAmountOfCoffees: () => void;
 };
 
@@ -26,24 +26,24 @@ type CoffeeContextProviderProps = {
   children: ReactNode;
 };
 
-const emptyCheckoutDataObject: checkoutFormData = {
-  bairro: "",
-  cep: "",
-  cidade: "",
-  numero: "",
-  pagamento: "",
-  rua: "",
-  uf: "",
-  complemento: "",
-};
+// const emptyCheckoutDataObject: checkoutFormData = {
+//   bairro: "",
+//   cep: "",
+//   cidade: "",
+//   numero: "",
+//   pagamento: "",
+//   rua: "",
+//   uf: "",
+//   complemento: "",
+// };
 
 export const CoffeeContextProvider = ({
   children,
 }: CoffeeContextProviderProps) => {
   const [coffees, dispatch] = React.useReducer(coffeesReducer, []);
 
-  const [checkoutOrderDataObject, setCheckoutOrderDataObject] =
-    React.useState<checkoutFormData>(emptyCheckoutDataObject);
+  // const [checkoutOrderDataObject, setCheckoutOrderDataObject] =
+  //   React.useState<checkoutFormData>(emptyCheckoutDataObject);
 
   const addNewCoffee = (data: Coffee) => {
     const newCoffee: Coffee = {
@@ -72,31 +72,31 @@ export const CoffeeContextProvider = ({
     dispatch(resetCoffeesAction());
   };
 
-  const createCheckoutOrder = (data: checkoutFormData) => {
-    const checkoutOrder: checkoutFormData = {
-      cep: data.cep,
-      rua: data.rua,
-      bairro: data.bairro,
-      numero: data.numero,
-      complemento: data.complemento,
-      cidade: data.cidade,
-      uf: data.uf.toUpperCase(),
-      pagamento: data.pagamento,
-    };
+  // const createCheckoutOrder = (data: checkoutFormData) => {
+  //   const checkoutOrder: checkoutFormData = {
+  //     cep: data.cep,
+  //     rua: data.rua,
+  //     bairro: data.bairro,
+  //     numero: data.numero,
+  //     complemento: data.complemento,
+  //     cidade: data.cidade,
+  //     uf: data.uf.toUpperCase(),
+  //     pagamento: data.pagamento,
+  //   };
 
-    setCheckoutOrderDataObject(checkoutOrder);
-  };
+  //   setCheckoutOrderDataObject(checkoutOrder);
+  // };
 
   return (
     <CoffeeContext.Provider
       value={{
         coffees,
-        checkoutOrderDataObject,
+        // checkoutOrderDataObject,
         addNewCoffee,
         removeItem,
         increaseAmount,
         decreaseAmount,
-        createCheckoutOrder,
+        // createCheckoutOrder,
         resetTotalAmountOfCoffees,
       }}
     >
