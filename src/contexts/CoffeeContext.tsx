@@ -1,7 +1,6 @@
 import React, { ReactNode } from "react";
 import { checkoutFormData } from "../pages/Checkout";
 import {
-  ActionTypes,
   addNewCoffeeAction,
   decreaseCoffeeAmountAction,
   increaseCoffeeAmountAction,
@@ -10,7 +9,7 @@ import {
 } from "../reducers/Coffees/actions";
 import { Coffee, coffeesReducer } from "../reducers/Coffees/reducer";
 
-type AppContextProps = {
+type CoffeeContextProps = {
   coffees: Coffee[];
   checkoutOrderDataObject: checkoutFormData;
   addNewCoffee: (data: Coffee) => void;
@@ -21,9 +20,9 @@ type AppContextProps = {
   resetTotalAmountOfCoffees: () => void;
 };
 
-export const AppContext = React.createContext({} as AppContextProps);
+export const CoffeeContext = React.createContext({} as CoffeeContextProps);
 
-type AppContextProviderProps = {
+type CoffeeContextProviderProps = {
   children: ReactNode;
 };
 
@@ -38,16 +37,17 @@ const emptyCheckoutDataObject: checkoutFormData = {
   complemento: "",
 };
 
-export const AppContextProvider = ({ children }: AppContextProviderProps) => {
+export const CoffeeContextProvider = ({
+  children,
+}: CoffeeContextProviderProps) => {
   const [coffees, dispatch] = React.useReducer(coffeesReducer, []);
 
   const [checkoutOrderDataObject, setCheckoutOrderDataObject] =
     React.useState<checkoutFormData>(emptyCheckoutDataObject);
 
   const addNewCoffee = (data: Coffee) => {
-    const id = String(new Date().getTime());
     const newCoffee: Coffee = {
-      id,
+      id: data.id,
       title: data.title,
       amount: data.amount,
       price: data.price,
@@ -88,7 +88,7 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
   };
 
   return (
-    <AppContext.Provider
+    <CoffeeContext.Provider
       value={{
         coffees,
         checkoutOrderDataObject,
@@ -101,6 +101,6 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
       }}
     >
       {children}
-    </AppContext.Provider>
+    </CoffeeContext.Provider>
   );
 };

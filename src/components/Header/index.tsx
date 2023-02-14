@@ -8,10 +8,10 @@ import {
 import coffeeLogo from "../../assets/logo-coffee.svg";
 import { MapPin, ShoppingCart } from "phosphor-react";
 import { Link } from "react-router-dom";
-import { AppContext } from "../../contexts/AppContext";
+import { CoffeeContext } from "../../contexts/CoffeeContext";
 
 export const Header = () => {
-  const { coffees } = React.useContext(AppContext);
+  const { coffees } = React.useContext(CoffeeContext);
   const [totalCartItems, setTotalCartItems] = React.useState(0);
 
   React.useEffect(() => {

@@ -11,7 +11,7 @@ import {
 import { ShoppingCart } from "phosphor-react";
 import { Link } from "react-router-dom";
 import { CoffeeProps } from "../..";
-import { AppContext } from "../../../../../contexts/AppContext";
+import { CoffeeContext } from "../../../../../contexts/CoffeeContext";
 import { AmountButton } from "../../../../../components/AmountButton";
 
 export const Coffee = ({
@@ -22,7 +22,7 @@ export const Coffee = ({
   price,
 }: CoffeeProps) => {
   const [amountCoffee, setAmountCoffee] = React.useState(0);
-  const { addNewCoffee } = React.useContext(AppContext);
+  const { addNewCoffee } = React.useContext(CoffeeContext);
 
   const handleAddCoffee = () => {
     setAmountCoffee((prev) => prev + 1);
@@ -36,7 +36,9 @@ export const Coffee = ({
   };
 
   const handleBuyCoffee = () => {
+    const id = String(new Date().getTime());
     const newCoffee = {
+      id,
       title,
       amount: amountCoffee,
       price: Number(price.replace(",", ".")),

@@ -1,12 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { AppContext } from "../../../../contexts/AppContext";
+import { CoffeeContext } from "../../../../contexts/CoffeeContext";
 import { Button } from "../../../../styles/global";
 import { Item } from "./Item";
 import { CheckoutInfo, ItemsContainer, Label, Price } from "./styles";
 
 export const CheckoutItems = () => {
-  const { coffees } = React.useContext(AppContext);
+  const { coffees } = React.useContext(CoffeeContext);
   const [totalCoffeesPrice, setTotalCoffeesPrice] = React.useState(0);
 
   React.useEffect(() => {

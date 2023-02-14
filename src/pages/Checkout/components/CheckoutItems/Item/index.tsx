@@ -1,7 +1,7 @@
 import React from "react";
 import { Trash } from "phosphor-react";
 import { AmountButton } from "../../../../../components/AmountButton";
-import { AppContext } from "../../../../../contexts/AppContext";
+import { CoffeeContext } from "../../../../../contexts/CoffeeContext";
 import {
   ItemContainer,
   ItemContentContainer,
@@ -13,7 +13,7 @@ import { Coffee } from "../../../../../reducers/Coffees/reducer";
 export const Item = ({ imageURL, price, title, amount, id }: Coffee) => {
   const stringPrice = price.toFixed(2).replace(".", ",");
   const { removeItem, increaseAmount, decreaseAmount } =
-    React.useContext(AppContext);
+    React.useContext(CoffeeContext);
 
   const handleIncreaseAmount = () => {
     increaseAmount(id);

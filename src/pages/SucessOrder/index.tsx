@@ -10,13 +10,13 @@ import {
 } from "./styles";
 import banner from "../../assets/success-order-banner.png";
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
-import { AppContext } from "../../contexts/AppContext";
+import { CoffeeContext } from "../../contexts/CoffeeContext";
 
 export const SuccessOrder = () => {
   const {
     checkoutOrderDataObject: { rua, numero, pagamento, bairro, cidade, uf },
     resetTotalAmountOfCoffees,
-  } = React.useContext(AppContext);
+  } = React.useContext(CoffeeContext);
 
   React.useEffect(() => {
     resetTotalAmountOfCoffees();

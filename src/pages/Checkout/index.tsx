@@ -6,7 +6,7 @@ import { CheckoutItems } from "./components/CheckoutItems";
 import { Form } from "./styles";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
-import { AppContext } from "../../contexts/AppContext";
+import { CoffeeContext } from "../../contexts/CoffeeContext";
 import { useNavigate } from "react-router-dom";
 
 const payments = ["Cartão de Crédito", "Cartão de Débito", "Dinheiro"];
@@ -44,7 +44,7 @@ export const Checkout = () => {
     },
   });
 
-  const { createCheckoutOrder } = useContext(AppContext);
+  const { createCheckoutOrder } = useContext(CoffeeContext);
   const navigate = useNavigate();
 
   const { handleSubmit, reset } = checkoutOrderData;
@@ -52,7 +52,7 @@ export const Checkout = () => {
   const handleCreateCheckoutOrder = (data: checkoutFormData) => {
     createCheckoutOrder(data);
     navigate("/sucess");
-    // reset();
+    reset();
   };
 
   return (
